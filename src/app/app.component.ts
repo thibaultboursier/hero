@@ -83,7 +83,7 @@ export class AppComponent {
           .subscribe(
             (hero: Hero) => this.heroes.push(hero),
             (errors: any) => { },
-            (complete: any) => console.log('complete')
+            () => console.log('complete')
           );
   }
 

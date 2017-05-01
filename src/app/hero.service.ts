@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class HeroService {
@@ -9,12 +9,8 @@ export class HeroService {
         return Promise.resolve(HEROES);
     }
 
-    getHeroesWithObservable():Observable {
-        return Observable.create((observer: any) => {
-            HEROES.forEach(hero => observer.next(hero));
-
-            observer.complete();
-        });
+    getHeroesWithObservable(){
+        return Observable.from(HEROES);
     }
 
     getHeroesSlowly(): any {
