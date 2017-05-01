@@ -72,15 +72,19 @@ import { HeroService } from './hero.service';
 export class AppComponent {
   title: string = 'Tour of Heroes';
   selectedHero: Hero;
-  heroes: Hero[];
+  heroes: Hero[] = [];
 
   constructor(private heroService: HeroService) {
       
   }
 
   getHeroes() {
-      this.heroService.getHeroesSlowly()
-          .then((heroes:Hero[]) => this.heroes = heroes);
+      this.heroService.getHeroesWithObservable()
+          .subscribe(
+            (hero: Hero) => this.heroes.push(hero),
+            (errors: any) => { },
+            (complete: any) => console.log('complete')
+          );
   }
 
   ngOnInit() {
