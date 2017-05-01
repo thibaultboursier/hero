@@ -7,4 +7,8 @@ export class HeroService {
     getHeroes(): any {
         return Promise.resolve(HEROES);
     }
+
+    getHeroesSlowly(): any {
+        return new Promise(resolve => setTimeout(resolve.bind(null, HEROES), 3000));
+    }
 }
