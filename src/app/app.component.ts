@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import {Component} from '@angular/core';
 import {Hero} from './Hero';
 import {HeroService} from './hero.service';
+=======
+﻿import { Component } from '@angular/core';
+import { Hero } from './hero';
+import { HeroService } from './hero.service';
+>>>>>>> 84ad6d92ddc01abaa9a02fa4bc3b4988d526f772
 
 @Component({
   selector: 'my-app',
@@ -18,7 +24,14 @@ import {HeroService} from './hero.service';
       </li>
     </ul>
     <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<<<<<<< HEAD
   `,
+=======
+`,
+  providers: [
+      HeroService
+  ],
+>>>>>>> 84ad6d92ddc01abaa9a02fa4bc3b4988d526f772
   styles: [`
     .selected {
       background-color: #CFD8DC !important;
@@ -70,8 +83,30 @@ import {HeroService} from './hero.service';
   `]
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'Tour of Heroes';
+=======
+  title: string = 'Tour of Heroes';
+>>>>>>> 84ad6d92ddc01abaa9a02fa4bc3b4988d526f772
   selectedHero: Hero;
+  heroes: Hero[] = [];
+
+  constructor(private heroService: HeroService) {
+      
+  }
+
+  getHeroes() {
+      this.heroService.getHeroesWithObservable()
+          .subscribe(
+            (hero: Hero) => this.heroes.push(hero),
+            (errors: any) => { },
+            () => console.log('complete')
+          );
+  }
+
+  ngOnInit() {
+      this.getHeroes();
+  }
 
   constructor(private heroService:HeroService){
   }
