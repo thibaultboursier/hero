@@ -4,6 +4,7 @@
 import {Component} from '@angular/core';
 import {Hero} from '../shared/types/hero';
 import {HeroService} from '../shared/services/hero.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -17,7 +18,8 @@ export class HeroesComponent {
   selectedHero: Hero;
   heroes: Hero[] = [];
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService,
+              private router: Router) {
   }
 
   getHeroes() {
@@ -29,6 +31,10 @@ export class HeroesComponent {
         },
         () => console.log('complete')
       );
+  }
+
+  goToHero(): void {
+    this.router.navigate(['/detail', this.selectedHero.id]);
   }
 
   ngOnInit() {
