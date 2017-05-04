@@ -2,9 +2,9 @@
  * Created by Thibault on 01/05/2017.
  */
 import {Routes, RouterModule} from '@angular/router';
-import {HeroDetailComponent} from './hero-detail.component';
-import {HeroesComponent} from './heroes.component';
-import {DashboardComponent} from './dashboard.component';
+import {HeroDetailComponent} from './hero-detail/hero-detail.component';
+import {HeroesComponent} from './heroes/heroes.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const ROUTES: Routes = [{
   path: 'heroes',
@@ -17,7 +17,7 @@ const ROUTES: Routes = [{
   redirectTo: 'dashboard',
   pathMatch: 'full'
 }, {
-  path:'detail/:id',
+  path: 'detail/:id',
   component: HeroDetailComponent
 }];
 
